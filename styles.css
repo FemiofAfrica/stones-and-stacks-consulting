@@ -240,7 +240,7 @@ body.reduce-motion *::after {
   gap: 28px;
   font-size: 13px;
   font-weight: 650;
-  color: #3a3a34;
+  color: var(--soft-ink);
 }
 .nav a {
   position: relative;
