@@ -4,165 +4,394 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stones and Stacks Consulting</title>
-  <meta name="description" content="Stones and Stacks Consulting helps organizations adopt AI responsibly, redesign workflows, protect teams, and deliver complex work." />
+  <meta name="description" content="We help ambitious teams and leaders move faster, govern AI responsibly, and build performance that lasts." />
+  <meta name="theme-color" content="#f6f4ef" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://stonesandstacks.com" />
+  <meta property="og:title" content="Stones and Stacks Consulting — The firm behind the ones who win." />
+  <meta property="og:description" content="We help ambitious teams and leaders move faster, govern AI responsibly, and build performance that lasts." />
+  <meta property="og:image" content="https://stonesandstacks.com/hero-bg.jpg" />
+  <meta property="og:image:width" content="1536" />
+  <meta property="og:image:height" content="1024" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Stones and Stacks Consulting — The firm behind the ones who win." />
+  <meta name="twitter:description" content="We help ambitious teams and leaders move faster, govern AI responsibly, and build performance that lasts." />
+  <meta name="twitter:image" content="https://stonesandstacks.com/hero-bg.jpg" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Stones and Stacks Consulting",
+    "url": "https://stonesandstacks.com",
+    "description": "Independent consulting for the ambitious. We bring the strategy, automation, governance, and discipline that turns ambition into momentum.",
+    "email": "hello@stonesandstacks.com",
+    "foundingDate": "2026",
+    "knowsAbout": [
+      "AI Automation",
+      "Project Management",
+      "AI Policy and Governance",
+      "Digital Wellness"
+    ],
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "minValue": 4,
+      "maxValue": 4
+    },
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.0579,
+        "longitude": 7.4951
+      },
+      "geoRadius": "500000"
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23607d6b'/%3E%3Ctext x='16' y='21' text-anchor='middle' fill='white' font-family='Inter,sans-serif' font-weight='800' font-size='12'%3ES%26S%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
+
+  <header class="site-header" role="banner">
     <a class="brand" href="#top" aria-label="Stones and Stacks home">
-      <span class="brand-mark">S&S</span>
+      <span class="brand-mark" aria-hidden="true">S&amp;S</span>
       <span>Stones and Stacks</span>
     </a>
     <nav class="nav" aria-label="Primary navigation">
-      <a href="#practices">Practices</a>
-      <a href="#workshop">Workshop</a>
       <a href="#company">Company</a>
+      <a href="#outcomes">Outcomes</a>
+      <a href="#perspectives">How We Think</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="nav-cta" href="mailto:hello@stonesandstacks.com">Book a consultation</a>
+    <a class="nav-cta" href="mailto:hello@stonesandstacks.com">Start a conversation</a>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-inner reveal">
-        <p class="eyebrow">Independent consulting for responsible AI transformation</p>
-        <h1>Stones and Stacks</h1>
-        <p class="hero-text">A consulting firm helping African organisations adopt AI, redesign workflows, strengthen governance, protect team wellbeing, and deliver complex work with discipline.</p>
-        <a class="hero-button" href="#practices">Explore services</a>
-      </div>
+  <main>
 
-      <div class="capability-row reveal delay-1" aria-label="Core capabilities">
-        <article>
-          <span class="icon">⌕</span>
-          <strong>Assess</strong>
-          <p>Find automation, governance, wellness, and delivery gaps.</p>
-        </article>
-        <article>
-          <span class="icon">◇</span>
-          <strong>Advise</strong>
-          <p>Create practical roadmaps, policies, and operating models.</p>
-        </article>
-        <article>
-          <span class="icon">✦</span>
-          <strong>Build</strong>
-          <p>Deploy workflows, agents, tools, training, and PM systems.</p>
-        </article>
-        <article>
-          <span class="icon">↻</span>
-          <strong>Embed</strong>
-          <p>Support teams until the new way of working sticks.</p>
-        </article>
-      </div>
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="top">
+      <!-- Stone grounding band: represents "Stones" as a foundation at the bottom of the hero -->
+      <div class="hero-stone-band" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb--1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb--3" aria-hidden="true"></div>
 
-      <div class="hero-image reveal delay-2" role="img" aria-label="Professional consulting team in a calm office setting">
-        <div class="notice-pill">Founder-led. Practice-specific. Built for lasting transformation.</div>
-      </div>
-    </section>
-
-    <section id="practices" class="section practices">
-      <div class="section-heading reveal">
-        <p class="eyebrow">Consulting practices</p>
-        <h2>Four focused practices. One coordinated delivery model.</h2>
-      </div>
-      <div class="practice-list">
-        <article class="practice-card reveal">
-          <div class="practice-number">01</div>
-          <div>
-            <h3>AI Automation</h3>
-            <p>Workflow audits, AI agent design, automation pipelines, business software integrations, and hands-on training for teams.</p>
-          </div>
-          <span>Femi</span>
-        </article>
-        <article class="practice-card reveal">
-          <div class="practice-number">02</div>
-          <div>
-            <h3>AI Policy and Governance</h3>
-            <p>AI usage policies, data governance, risk assessment, board advisory, ethics training, and compliance-ready frameworks.</p>
-          </div>
-          <span>Samuel Ajayi</span>
-        </article>
-        <article class="practice-card reveal">
-          <div class="practice-number">03</div>
-          <div>
-            <h3>Digital Wellness</h3>
-            <p>Digital wellness audits, sustainable productivity systems, employee wellbeing workshops, and technology habit design.</p>
-          </div>
-          <span>Tosin Olabode</span>
-        </article>
-        <article class="practice-card reveal">
-          <div class="practice-number">04</div>
-          <div>
-            <h3>Project Management</h3>
-            <p>PM process design, tool setup, fractional project management, PMO setup, and execution training for growing teams.</p>
-          </div>
-          <span>Taiye Alaofin</span>
-        </article>
-      </div>
-    </section>
-
-    <section class="section models">
-      <div class="model-panel reveal">
-        <div>
-          <p class="eyebrow">Engagement models</p>
-          <h2>Start with clarity. Continue with implementation.</h2>
+      <div class="hero-inner">
+        <p class="eyebrow">Independent consulting for the ambitious</p>
+        <h1>The firm behind the ones who win.</h1>
+        <p class="hero-text">
+          You have a vision, pressure to execute, and no room for missteps.
+          We bring the strategy, automation, governance, and discipline
+          that turns ambition into momentum.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="#outcomes">What you came to get</a>
+          <a class="btn btn--outline" href="#company">Meet the firm</a>
         </div>
-        <div class="model-grid">
-          <div><strong>Assessment and Roadmap</strong><p>Audit the current state and leave with an execution plan.</p></div>
-          <div><strong>Implementation Sprint</strong><p>Build, deploy, document, and hand over working systems.</p></div>
-          <div><strong>Retainer Advisory</strong><p>Ongoing governance, automation tuning, delivery support, and team guidance.</p></div>
-          <div><strong>Workshop and Training</strong><p>Focused upskilling sessions for professionals, teams, and leadership groups.</p></div>
+      </div>
+
+      <div class="hero-stats" aria-label="Firm at a glance">
+        <div class="stat">
+          <span class="stat-num">4</span>
+          <span class="stat-label">Founders</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">4</span>
+          <span class="stat-label">Practice Areas</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">1</span>
+          <span class="stat-label">Unified Firm</span>
         </div>
       </div>
     </section>
 
-    <section id="workshop" class="section workshop">
-      <div class="workshop-copy reveal">
-        <p class="eyebrow">Featured programme</p>
-        <h2>AI Automation Workshop</h2>
-        <p>An intensive, hands-on Abuja workshop where professionals and teams build three useful AI workflows in one day.</p>
-        <ul>
-          <li>Sales or operations workflow</li>
-          <li>Finance or admin workflow</li>
-          <li>Content or marketing workflow</li>
-        </ul>
-      </div>
-      <div class="workshop-card reveal delay-1">
-        <img src="selar-product-image.png" alt="AI Automation Workshop product graphic" />
-        <div>
-          <strong>Saturday, July 25, 2026</strong>
-          <span>10:00 AM – 4:00 PM</span>
-          <span>Novare Mall, Abuja</span>
-          <span>Early bird ₦50,000 · Standard ₦55,000</span>
+    <!-- ═══ COMPANY ═══ -->
+    <section class="section company" id="company">
+      <div class="company-bg" aria-hidden="true"></div>
+      <div class="section-inner company-layout">
+        <div class="company-text">
+          <p class="eyebrow reveal">About the firm</p>
+          <h2 class="reveal delay-1">Four practitioners. One firm. Decades of combined experience.</h2>
+          <p class="intro-text reveal delay-1">
+            Stones and Stacks was built with 2 words in mind: Legacy and
+            Growth. These are the anchors that hold every practice area,
+            combining a cumulative experience of almost 40 years under one roof.
+          </p>
+          <p class="intro-text reveal delay-1">
+            We've built for government agencies, fintechs, professional service firms,
+            and non-profits, managed complex stakeholder projects, and designed digital
+            wellness programs across multiple sectors.
+          </p>
+          <div class="company-cta reveal delay-2">
+            <a class="btn btn--ghost" href="#outcomes">See what this means for you</a>
+          </div>
+        </div>
+
+        <div class="practice-blocks reveal delay-1" aria-label="Four practice areas">
+          <div class="practice-block">
+            <strong>AI Automation</strong>
+            <span>Workflow audits, agent deployment, n8n/Make pipelines, corporate AI training</span>
+          </div>
+          <div class="practice-block">
+            <strong>Project Management</strong>
+            <span>Gov&amp;private-sector delivery, PMO setup, fractional PM for growing teams</span>
+          </div>
+          <div class="practice-block">
+            <strong>AI Policy &amp; Governance</strong>
+            <span>Compliance frameworks, board advisory, data governance — informed by Agora Policy</span>
+          </div>
+          <div class="practice-block">
+            <strong>Digital Wellness</strong>
+            <span>Team wellbeing audits, sustainable productivity — built through Doing Health Africa</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="company" class="section company">
-      <div class="company-card reveal">
-        <p class="eyebrow">Company foundation</p>
-        <h2>Built as a firm, not a personal brand.</h2>
-        <p>Stones and Stacks was created by four practitioners pooling experience, resources, knowledge, and networks into a consulting company designed for long-term institutional credibility.</p>
+    <!-- ═══ EXPERIENCE STRIP ═══ -->
+    <div class="experience-strip">
+      <div class="exp-head reveal">
+        <p class="eyebrow">Proven delivery across sectors</p>
+        <span class="exp-head-line" aria-hidden="true"></span>
       </div>
-      <div class="milestones reveal delay-1">
-        <div><strong>6 months</strong><span>First paid engagements, CAC registration, clear brand and website.</span></div>
-        <div><strong>1 year</strong><span>Repeat clients and at least one multi-practice engagement.</span></div>
-        <div><strong>3 years</strong><span>Recognised consulting firm in the Nigerian AI and transformation space.</span></div>
+      <div class="exp-connector">
+        <div class="exp-item reveal">
+          <strong>NDPC-Aligned Frameworks</strong>
+          <span>Governance and compliance for AI deployment across regulated sectors.</span>
+        </div>
+        <div class="exp-item reveal delay-1">
+          <strong>Production AI Agents</strong>
+          <span>Deployed chatbots, decision engines, and data pipelines for real organizations.</span>
+        </div>
+        <div class="exp-item reveal delay-1">
+          <strong>End-to-End Project Execution</strong>
+          <span>Multi-stakeholder project execution for government and development programs.</span>
+        </div>
+        <div class="exp-item reveal delay-2">
+          <strong>Team Wellness Design</strong>
+          <span>Productivity and wellbeing programs for organizations managing hybrid teams.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ OUTCOMES ═══ -->
+    <section class="section outcomes" id="outcomes">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow reveal">What you came to get</p>
+          <h2 class="reveal delay-1">Three outcomes. One firm. Yours to choose.</h2>
+        </div>
+
+        <div class="outcomes-grid">
+
+          <!-- Strategic Velocity -->
+          <article class="outcome-card outcome-card--featured reveal">
+            <div class="outcome-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="outcome-body">
+              <h3>Strategic Velocity</h3>
+              <p>
+                Speed with direction. Your team stops spinning and starts moving —
+                faster decisions, automated workflows, disciplined execution.
+              </p>
+              <ul class="outcome-details">
+                <li>Workflow audit and automation opportunity assessment</li>
+                <li>AI agent design and deployment</li>
+                <li>n8n / Make / custom pipeline builds</li>
+                <li class="outcome-detail-hidden">CRM and business software integration</li>
+                <li class="outcome-detail-hidden">Fractional PM and PMO setup</li>
+              </ul>
+              <button class="outcome-more" aria-expanded="false">
+                <span class="outcome-more-text">2 more</span>
+                <span class="outcome-less-text" hidden>Show less</span>
+              </button>
+              <a class="outcome-link" href="#contact">Learn more &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Risk-Ready -->
+          <article class="outcome-card reveal delay-1">
+            <div class="outcome-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="outcome-body">
+              <h3>Risk-Ready</h3>
+              <p>
+                Adopt AI with confidence. Clear governance, compliance frameworks,
+                and ethical guardrails so you can innovate without exposing the organization.
+              </p>
+              <ul class="outcome-details">
+                <li>AI usage policies and internal governance documentation</li>
+                <li>Data governance frameworks</li>
+                <li>AI risk assessment for specific use cases</li>
+                <li class="outcome-detail-hidden">Board-level advisory on NDPC and global standards</li>
+                <li class="outcome-detail-hidden">AI ethics training for leadership teams</li>
+              </ul>
+              <button class="outcome-more" aria-expanded="false">
+                <span class="outcome-more-text">2 more</span>
+                <span class="outcome-less-text" hidden>Show less</span>
+              </button>
+              <a class="outcome-link" href="#contact">Learn more &rarr;</a>
+            </div>
+          </article>
+
+          <!-- High-Performance Culture -->
+          <article class="outcome-card reveal delay-1">
+            <div class="outcome-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <div class="outcome-body">
+              <h3>High-Performance Culture</h3>
+              <p>
+                Teams that operate at their best without burning out. Sustainable
+                productivity habits, technology environments designed for focus.
+              </p>
+              <ul class="outcome-details">
+                <li>Digital wellness audits and team assessments</li>
+                <li>Productivity system design</li>
+                <li>Corporate wellness workshops and programs</li>
+                <li class="outcome-detail-hidden">Digital detox design for organizations</li>
+                <li class="outcome-detail-hidden">Sustainable hybrid-work operating models</li>
+              </ul>
+              <button class="outcome-more" aria-expanded="false">
+                <span class="outcome-more-text">2 more</span>
+                <span class="outcome-less-text" hidden>Show less</span>
+              </button>
+              <a class="outcome-link" href="#contact">Learn more &rarr;</a>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="outcome-summary reveal delay-2">
+          <p>Not sure which fits? <a href="mailto:hello@stonesandstacks.com">Tell us what you're facing</a> — we'll point you to the right outcome.</p>
+        </div>
       </div>
     </section>
 
-    <section id="contact" class="section contact">
-      <p class="eyebrow">Contact</p>
-      <h2>Bring the workflow, policy question, wellbeing challenge, or stalled project.</h2>
-      <a class="hero-button" href="mailto:hello@stonesandstacks.com?subject=Consulting%20Inquiry%20for%20Stones%20and%20Stacks">Email hello@stonesandstacks.com</a>
+    <!-- ═══ WORKSHOP BANNER ═══ -->
+    <div class="workshop-banner">
+      <div class="workshop-banner-inner">
+        <div class="workshop-banner-content">
+          <span class="tryus-badge">Coming Up</span>
+          <h3>AI Automation Workshop</h3>
+          <p class="workshop-banner-desc">
+            Build 3 working AI workflows in one day — your first taste of Strategic Velocity.
+          </p>
+          <div class="workshop-banner-meta">
+            <span>July 25, 2026</span>
+            <span>10AM – 4PM · Novare Mall, Abuja</span>
+            <span>₦50,000 early · ₦55,000 standard</span>
+          </div>
+        </div>
+        <div class="workshop-banner-cta">
+          <a class="btn btn--primary" href="mailto:hello@stonesandstacks.com?subject=AI%20Automation%20Workshop">Reserve your spot</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ HOW WE THINK ═══ -->
+    <section class="section perspectives" id="perspectives">
+      <div class="perspectives-bg" aria-hidden="true"></div>
+      <div class="pattern-grid" aria-hidden="true"></div>
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow reveal">How we think</p>
+          <h2 class="reveal delay-1">Perspectives from the firm.</h2>
+          <p class="intro-text reveal delay-1">Case studies, industry views, and the collective thinking of four practitioners building a firm together.</p>
+        </div>
+
+        <div class="perspectives-grid">
+
+          <article class="perspective-card perspective-card--featured reveal">
+            <span class="persp-tag">Coming soon</span>
+            <h3>Why we built the AI Automation Workshop</h3>
+            <p>The thinking behind our first public offering — and why "try us" beats "pitch us" every time.</p>
+            <span class="persp-footer">First piece · Expected July 2026</span>
+          </article>
+
+          <article class="perspective-card reveal delay-1">
+            <span class="persp-tag">Coming soon</span>
+            <h3>AI governance is not a one-time document</h3>
+            <p>Why compliance is a practice, not a deliverable — and what it means for organizations adopting AI today.</p>
+            <span class="persp-footer">Samuel Ajayi · Policy perspective</span>
+          </article>
+
+          <article class="perspective-card reveal delay-1">
+            <span class="persp-tag">Coming soon</span>
+            <h3>The case for strategic velocity</h3>
+            <p>Why speed with direction beats generic process improvement — and what it looks like in practice.</p>
+            <span class="persp-footer">Femi · Automation perspective</span>
+          </article>
+
+        </div>
+      </div>
     </section>
+
+    <!-- ═══ CONTACT ═══ -->
+    <section class="section contact" id="contact">
+      <div class="contact-bg" aria-hidden="true"></div>
+      <div class="pattern-grid" aria-hidden="true"></div>
+      <div class="contact-inner">
+        <p class="eyebrow reveal">Start the conversation</p>
+        <h2 class="reveal delay-1">Bring the ambition, the risk, the stalled project, or the team that deserves better.</h2>
+        <p class="intro-text reveal delay-1">
+          Tell us what you're facing. We'll tell you which outcome fits — and what it looks like to work together.
+        </p>
+
+        <form class="contact-form reveal delay-2" netlify action="/api/contact" method="POST">
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your name" required aria-label="Your name" />
+            <input type="email" name="email" placeholder="Email address" required aria-label="Email address" />
+          </div>
+          <div class="form-select-wrap">
+            <select name="practice" required aria-label="Which practice area?">
+              <option value="">Which practice area?</option>
+              <option value="ai-automation">AI Automation</option>
+              <option value="project-management">Project Management</option>
+              <option value="ai-governance">AI Policy &amp; Governance</option>
+              <option value="digital-wellness">Digital Wellness</option>
+              <option value="not-sure">Not sure yet</option>
+            </select>
+          </div>
+          <textarea name="message" rows="4" placeholder="Tell us what you're facing&#8230;" required aria-label="Your message"></textarea>
+          <div class="form-footer">
+            <button type="submit" class="btn btn--primary btn--large">Send message</button>
+            <span class="contact-secondary">Or <a href="mailto:hello@stonesandstacks.com">email us directly</a></span>
+          </div>
+          <div class="form-status" aria-live="polite" hidden></div>
+        </form>
+
+      </div>
+    </section>
+
   </main>
 
-  <footer class="footer">
-    <span>© 2026 Stones and Stacks Consulting</span>
-    <span>stonesandstacks.com</span>
+  <footer class="footer" role="contentinfo">
+    <span>&copy; 2026 Stones and Stacks Consulting</span>
+    <div class="footer-links">
+      <a href="mailto:hello@stonesandstacks.com">hello@stonesandstacks.com</a>
+    </div>
   </footer>
 
   <script src="script.js"></script>

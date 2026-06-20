@@ -1,0 +1,21 @@
+{
+  "name": "stones-and-stacks-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stones and Stacks Consulting — website prototype",
+  "scripts": {
+    "dev": "python3 -m http.server 4173",
+    "build": "node scripts/build.js",
+    "preview": "python3 -m http.server 4173 --directory dist",
+    "build:assets": "cp -r hero-bg.jpg hero-bg.webp dist/ 2>/dev/null; true"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "devDependencies": {
+    "lightningcss": "^1.32.0",
+    "lightningcss-cli": "^1.32.0"
+  }
+}

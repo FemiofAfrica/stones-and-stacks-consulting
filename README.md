@@ -1,35 +1,45 @@
-# Stones and Stacks Website Prototype
+# Stones and Stacks Consulting
 
-A polished static website prototype for Stones and Stacks Consulting, built from the markdown source files in this folder.
+The firm behind the ones who win.
 
-## Open locally
+## Structure
 
-Open `index.html` in any browser.
-
-For a lightweight local server:
-
-```bash
-cd ~/Documents/stones-and-stacks/website-prototype
-python3 -m http.server 4173
+```
+├── index.html          # Main site
+├── styles.css          # Design system + layout (CSS custom properties)
+├── script.js           # Scroll reveal, nav, expand/collapse, contact form
+├── package.json        # Build tooling (npm run build → dist/)
+├── scripts/
+│   └── build.js        # Minifies CSS (+24%), HTML (+21%), copies assets
+├── content/            # Source docs (MISSION.md, service-offerings.md, etc.)
+├── hero-bg.jpg         # Hero background (JPEG fallback)
+├── hero-bg.webp        # Hero background (WebP — modern browsers)
+└── .gitignore
 ```
 
-Then visit `http://localhost:4173`.
+## Local dev
 
-## Content mapping
+```bash
+npm run dev
+# → http://localhost:4173
+```
 
-- `MISSION.md` informed the hero positioning, founder-led practice structure, differentiation, about section, and milestone timeline.
-- `service-offerings.md` informed the services section, engagement models, package ideas, client profiles, differentiators, and owner/practice details.
-- `selar-page-draft.md` informed the AI Automation Workshop feature, pricing, date, venue, workshop promise, and attendee outcomes.
+## Build for production
 
-## Imagery notes
+```bash
+npm run build
+# → dist/
+```
 
-- The workshop product image uses the existing `selar-product-image.png` from the parent folder.
-- The prototype uses remote Unsplash placeholders for professional atmosphere, collaboration, and generational brand imagery.
-- Recommended final image direction: real Nigerian/African team workshop photos, polished founder portraits, abstract workflow visuals, and tasteful city/business environment photography.
-- Suggested alt text should describe the image content directly, not repeat marketing copy.
+```bash
+npm run preview
+# → serves dist/ on http://localhost:4173
+```
 
-## Placeholder decisions
+## Deploy
 
-- Pricing remains hidden for consulting services because the source docs mark it as TBD.
-- Contact uses `hello@stonesandstacks.com` from the source docs.
-- The site is not deployed or published.
+This repo is configured for Cloudflare Pages:
+
+- **Build command:** `npm ci && npm run build`
+- **Root directory:** `dist`
+- **Domain:** stonesandstacks.com
