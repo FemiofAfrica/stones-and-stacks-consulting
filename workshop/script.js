@@ -63,20 +63,26 @@
     const phoneInput = document.getElementById('quiz-phone');
     const emailBtn = document.getElementById('quiz-email-btn');
 
-    // Google Form config
+    // Store answers
+    const answers = {};
+    const totalQs = questions.length; // 7
+    let currentQ = 1;
+
+    // n8n webhook (primary — update URL once Railway n8n is deployed)
+    const N8N_WEBHOOK_URL = 'https://n8n.yourdomain.com/webhook/workshop-quiz';
+
+    // Google Form config (fallback — still fires, no-cors)
     const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfeulW8QXhS2XYI-ZIXj01CunFclaJGIDl6S0ZJpKL1-uAkfA/formResponse';
     const ENTRY_IDS = {
-      1: 'entry.1646956508',   // hours
-      2: 'entry.2089935750',   // time sink
-      3: 'entry.1945997843',   // AI experience
-      4: 'entry.502146189',    // industry
-      5: 'entry.1401871249',   // team size
-      6: 'entry.168774361',    // frustration
+      1: 'entry.1646956508',
+      2: 'entry.2089935750',
+      3: 'entry.1945997843',
+      4: 'entry.502146189',
+      5: 'entry.1401871249',
+      6: 'entry.168774361',
       email: 'entry.2126477864',
       phone: 'entry.1929819026'
     };
-
-    // Map quiz internal values → Google Form option labels
     const VALUE_MAP = {
       1: { '1': '<5', '2': '5-10', '3': '10-20', '4': '20+' },
       2: { 'customer': 'Customer service', 'admin': 'Admin', 'finance': 'Finance', 'content': 'Content', 'other': 'Other' },
@@ -86,42 +92,42 @@
       6: { 'time': 'Time wasted', 'errors': 'Errors', 'tools': 'Wrong tools', 'knowledge': 'Don\'t know how to apply' }
     };
 
-    // Store answers
-    const answers = {};
-    const totalQs = questions.length; // 7
-    let currentQ = 1;
-    let submitted = false;
+    // Build payload for n8n
+    const buildPayload = (email, phone) => {
+      const q4Map = { 'retail': 'Retail/E-commerce', 'professional': 'Professional Services', 'tech': 'Tech/Fintech', 'nonprofit': 'NGO', 'other': 'Other' };
+      const q5Map = { 'solo': 'Solo', 'small': '2-10', 'medium': '11-50', 'enterprise': '50+' };
+      const q6Map = { 'time': 'Time wasted', 'errors': 'Errors', 'tools': 'Wrong tools', 'knowledge': 'Don\'t know how to apply' };
+      return {
+        email: email,
+        phone: phone || '',
+        industry: q4Map[answers['4']] || '',
+        teamSize: q5Map[answers['5']] || '',
+        frustration: q6Map[answers['6']] || '',
+        leadName: email.split('@')[0] || 'Lead',
+      };
+    };
 
-    // Submit to Google Forms
+    // Submit to n8n webhook (fire-and-forget, no error thrown)
+    const submitToN8n = (email, phone) => {
+      fetch(N8N_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(buildPayload(email, phone))
+      }).catch(function() {});
+    };
+
+    // Submit to Google Forms (no-cors fallback)
     const submitToGoogleForm = (email, phone) => {
-      const formData = new URLSearchParams();
-
-      // Add each answered question
-      for (let q = 1; q <= 6; q++) {
-        const val = answers[q];
+      var fd = new URLSearchParams();
+      for (var q = 1; q <= 6; q++) {
+        var val = answers[q];
         if (val && VALUE_MAP[q] && VALUE_MAP[q][val]) {
-          formData.append(ENTRY_IDS[q], VALUE_MAP[q][val]);
+          fd.append(ENTRY_IDS[q], VALUE_MAP[q][val]);
         }
       }
-
-      // Add email
-      if (email) {
-        formData.append(ENTRY_IDS.email, email);
-      }
-
-      // Add phone if available
-      if (phone && ENTRY_IDS.phone) {
-        formData.append(ENTRY_IDS.phone, phone);
-      }
-
-      // Submit via fetch (CORS-friendly beacon)
-      fetch(FORM_URL, {
-        method: 'POST',
-        mode: 'no-cors',  // Google Forms doesn't support CORS; we fire and forget
-        body: formData
-      }).catch(() => {
-        // Silent fail — Google Forms no-cors returns opaque response
-      });
+      if (email) fd.append(ENTRY_IDS.email, email);
+      if (phone && ENTRY_IDS.phone) fd.append(ENTRY_IDS.phone, phone);
+      fetch(FORM_URL, { method: 'POST', mode: 'no-cors', body: fd }).catch(function() {});
     };
 
     // Result profiles
@@ -131,7 +137,6 @@
       const frustration = answers['6'] || 'time';
       const industry = answers['4'] || 'other';
 
-      // Composite readiness score: hours + ai experience
       let readiness = 0;
       if (hours >= 3) readiness += 2;
       if (hours >= 2) readiness += 1;
@@ -166,84 +171,73 @@
         ];
       }
 
-      return { profile, text, recs, industry };
+      return { profile: profile, text: text, recs: recs, industry: industry };
     };
 
-    const showQuestion = (num) => {
-      questions.forEach((q) => q.classList.toggle('active', parseInt(q.dataset.q) === num));
-      const progress = ((num - 1) / totalQs) * 100;
-      if (progressBar) progressBar.style.width = progress + '%';
+    const showQuestion = function(num) {
+      questions.forEach(function(q) {
+        q.classList.toggle('active', parseInt(q.dataset.q) === num);
+      });
+      var pct = ((num - 1) / totalQs) * 100;
+      if (progressBar) progressBar.style.width = pct + '%';
       currentQ = num;
-
-      // Focus email field when reaching Q7
       if (num === 7 && emailInput) {
-        setTimeout(() => emailInput.focus(), 300);
+        setTimeout(function() { emailInput.focus(); }, 300);
       }
     };
 
-    const showResult = () => {
-      questions.forEach((q) => q.classList.remove('active'));
+    const showResult = function() {
+      questions.forEach(function(q) { q.classList.remove('active'); });
       if (progressBar) progressBar.style.width = '100%';
-
-      const result = getResult(answers);
+      var result = getResult(answers);
       resultTitle.textContent = 'Your AI Automation Readiness';
       resultScore.textContent = result.profile;
       resultText.textContent = result.text;
-
       resultRecs.innerHTML = '';
-      result.recs.forEach((rec, i) => {
-        const p = document.createElement('p');
+      for (var i = 0; i < result.recs.length; i++) {
+        var p = document.createElement('p');
         p.className = 'quiz-result-rec';
-        p.innerHTML = '<strong>' + (i + 1) + '.</strong> ' + rec;
+        p.innerHTML = '<strong>' + (i + 1) + '.</strong> ' + result.recs[i];
         resultRecs.appendChild(p);
-      });
-
+      }
       resultEl.hidden = false;
     };
 
     // Handle option clicks (Q1–Q6)
-    quiz.querySelectorAll('.quiz-opt').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const questionEl = btn.closest('.quiz-question');
-        const qNum = parseInt(questionEl.dataset.q);
-
-        // Deselect siblings
-        questionEl.querySelectorAll('.quiz-opt').forEach((opt) => opt.classList.remove('selected'));
+    quiz.querySelectorAll('.quiz-opt').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var qEl = btn.closest('.quiz-question');
+        var qNum = parseInt(qEl.dataset.q);
+        qEl.querySelectorAll('.quiz-opt').forEach(function(o) { o.classList.remove('selected'); });
         btn.classList.add('selected');
-
-        // Store answer
         answers[qNum] = btn.dataset.value;
-
-        // Auto-advance
-        setTimeout(() => showQuestion(qNum + 1), 250);
+        setTimeout(function() { showQuestion(qNum + 1); }, 250);
       });
     });
 
-    // Handle email submission (Q7)
+    // Handle email/phone submission (Q7)
     if (emailBtn && emailInput) {
-      const submitEmail = () => {
-        const email = emailInput.value.trim();
-        if (!email || !email.includes('@')) {
+      var submitEmail = function() {
+        var email = emailInput.value.trim();
+        if (!email || email.indexOf('@') === -1) {
           emailInput.focus();
-          emailInput.style.borderColor = '#b58268'; // terracotta error
+          emailInput.style.borderColor = '#b58268';
           return;
         }
         emailInput.style.borderColor = '';
         answers[7] = email;
-
-        // Get phone
-        const phone = phoneInput ? phoneInput.value.trim() : '';
+        var phone = phoneInput ? phoneInput.value.trim() : '';
         answers.phone = phone;
 
-        // Submit to Google Forms
+        // Fire both — n8n webhook (primary) and Google Form (fallback)
+        submitToN8n(email, phone);
         submitToGoogleForm(email, phone);
 
-        // Show result
         setTimeout(showResult, 300);
       };
 
       emailBtn.addEventListener('click', submitEmail);
-      emailInput.addEventListener('keydown', (e) => {
+      emailInput.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
           e.preventDefault();
           submitEmail();
@@ -253,27 +247,17 @@
 
     // Retake
     if (retakeBtn) {
-      retakeBtn.addEventListener('click', () => {
-        // Reset all
-        Object.keys(answers).forEach((k) => delete answers[k]);
-        quiz.querySelectorAll('.quiz-opt').forEach((opt) => opt.classList.remove('selected'));
-        if (emailInput) {
-          emailInput.value = '';
-          emailInput.style.borderColor = '';
-        }
-        if (phoneInput) {
-          phoneInput.value = '';
-        }
+      retakeBtn.addEventListener('click', function() {
+        for (var k in answers) delete answers[k];
+        quiz.querySelectorAll('.quiz-opt').forEach(function(o) { o.classList.remove('selected'); });
+        if (emailInput) { emailInput.value = ''; emailInput.style.borderColor = ''; }
+        if (phoneInput) { phoneInput.value = ''; }
         resultEl.hidden = true;
         showQuestion(1);
       });
     }
 
-    // Init
     showQuestion(1);
   }
-
-  /* ─── FAQ ACCORDION ─── */
-  // Already works natively with <details>/<summary>
 
 })();
