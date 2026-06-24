@@ -449,12 +449,18 @@ body.reduce-motion *::after {
   opacity: .08;
   pointer-events: none;
 }
-.company-layout {
+.company-heading {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 48px;
   position: relative;
+  z-index: 2;
+}
+.company-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  align-items: start;
+  align-items: center;
 }
 .company-text {
   position: relative;
@@ -1363,7 +1369,8 @@ body.reduce-motion *::after {
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1000px) {
-  .company-layout { grid-template-columns: 1fr; gap: 36px; }
+  .company-body { grid-template-columns: 1fr; gap: 36px; }
+  .company-heading { margin-bottom: 32px; }
   .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
   .perspectives-grid { grid-template-columns: 1fr 1fr; }
   .perspective-card:last-child { display: none; }
