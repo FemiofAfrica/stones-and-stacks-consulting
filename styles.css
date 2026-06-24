@@ -828,62 +828,194 @@ body.reduce-motion *::after {
   color: var(--accent-drk);
 }
 
-/* ─── WORKSHOP BANNER (standalone) ─── */
-.workshop-banner {
-  background: var(--accent-lt);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.workshop-banner-inner {
-  width: min(1120px, calc(100% - 44px));
+/* ─── WORKSHOP BANNER (promo card) ─── */
+.ws-banner {
+  background: #142118;
+  border-radius: var(--radius-lg);
   margin: 0 auto;
+  width: min(1120px, calc(100% - 44px));
+  position: relative;
+  overflow: hidden;
+}
+.ws-banner-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
-  padding: 40px 0;
+  gap: 40px;
+  padding: 44px 48px;
+  position: relative;
 }
-.workshop-banner-content {
+
+/* Gold L-accent in top-right corner */
+.ws-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border-top: 2px solid #c9a84c;
+  border-right: 2px solid #c9a84c;
+  border-radius: 0 var(--radius-lg) 0 0;
+  pointer-events: none;
+}
+
+/* Left: content */
+.ws-content {
   flex: 1;
   min-width: 0;
 }
-.workshop-banner h3 {
-  margin: 0 0 6px;
-  font-size: 22px;
+.ws-eyebrow {
+  margin: 0 0 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #c9a84c;
 }
-.workshop-banner-desc {
+.ws-title {
+  margin: 0 0 14px;
+  font-size: clamp(28px, 3.6vw, 40px);
+  line-height: 1.05;
+  letter-spacing: -.04em;
+  font-weight: 900;
+  color: #f0ece4;
+}
+.ws-title-em {
+  color: #c9a84c;
+}
+.ws-desc {
+  margin: 0;
   font-size: 14px;
-  color: var(--soft-ink);
-  margin-bottom: 12px;
-  max-width: 520px;
-}
-.workshop-banner-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 18px;
-  font-size: 12px;
-  color: var(--muted);
-  font-weight: 600;
-}
-.workshop-banner-cta {
-  flex-shrink: 0;
-}
-.workshop-banner-cta .btn {
-  white-space: nowrap;
+  line-height: 1.6;
+  color: #a8a498;
+  max-width: 480px;
 }
 
-/* Reused by both old workshop-tryus and new banner */
-.tryus-badge {
-  display: inline-block;
-  padding: 3px 10px;
-  margin-bottom: 12px;
-  border-radius: 999px;
-  background: var(--accent);
-  color: white;
-  font-size: 9px;
+/* Right: details */
+.ws-side {
+  flex-shrink: 0;
+  width: 320px;
+}
+.ws-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.ws-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 16px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(201,168,76,.3);
+}
+.ws-icon {
+  width: 18px;
+  height: 18px;
+  margin-bottom: 6px;
+}
+.ws-card-primary {
+  display: block;
+  font-size: 14px;
   font-weight: 800;
+  letter-spacing: -.02em;
+  color: #c9a84c;
+}
+.ws-card-secondary {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
+  color: #8a867a;
+}
+
+/* Booking strip */
+.ws-book {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  background: #c9a84c;
+}
+.ws-book-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.ws-book-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(20,33,24,.6);
+}
+.ws-book-price {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -.03em;
+  color: #142118;
+  line-height: 1;
+}
+.ws-book-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: #1a1a16;
+  color: #f0ece4;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background .25s ease, transform .25s ease;
+}
+.ws-book-btn:hover {
+  background: #2a2a24;
+  transform: translateY(-1px);
+}
+.ws-arrow {
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .ws-banner-inner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 36px 28px;
+    gap: 28px;
+  }
+  .ws-side {
+    width: 100%;
+    max-width: 380px;
+  }
+  .ws-accent {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media (max-width: 520px) {
+  .ws-banner-inner {
+    padding: 28px 20px;
+    gap: 24px;
+  }
+  .ws-cards {
+    grid-template-columns: 1fr;
+  }
+  .ws-book {
+    flex-direction: column;
+    gap: 14px;
+    align-items: stretch;
+    text-align: center;
+  }
+  .ws-book-btn {
+    justify-content: center;
+  }
 }
 
 .outcome-summary {
@@ -1258,8 +1390,6 @@ body.reduce-motion *::after {
   .outcome-card { padding: 20px; }
   .outcome-icon { width: 40px; height: 40px; border-radius: 12px; }
   .outcome-icon svg { width: 20px; height: 20px; }
-  .workshop-banner-inner { flex-direction: column; text-align: center; gap: 20px; padding: 30px 0; }
-  .workshop-banner-desc { margin-left: auto; margin-right: auto; }
   .perspectives-grid { grid-template-columns: 1fr; }
   .perspective-card:last-child { display: block; }
   .contact-form .form-row { grid-template-columns: 1fr; gap: 10px; }
@@ -1272,9 +1402,6 @@ body.reduce-motion *::after {
   .outcomes-grid { grid-template-columns: 1fr; }
   .exp-connector { grid-template-columns: 1fr; }
   .practice-blocks { grid-template-columns: 1fr; }
-  .workshop-banner-inner { padding: 24px 0; }
-  .workshop-banner-meta { flex-direction: column; gap: 2px; }
-  .workshop-banner-cta .btn { width: 100%; text-align: center; }
   .hero-actions { flex-direction: column; align-items: center; }
   .footer { flex-direction: column; text-align: center; }
 }
