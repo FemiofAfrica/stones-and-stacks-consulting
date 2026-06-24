@@ -942,24 +942,11 @@ body.reduce-motion *::after {
   border-radius: var(--radius-sm);
   background: #c9a84c;
 }
-.ws-book-text {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-.ws-book-label {
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: rgba(20,33,24,.6);
-}
-.ws-book-price {
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: -.03em;
-  color: #142118;
-  line-height: 1;
+.ws-book-learn {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: #1a1a16;
 }
 .ws-book-btn {
   display: inline-flex;
