@@ -14,7 +14,7 @@
   --line:       #d4ab4f;
   --ink-rgb:    28, 28, 24;
   --accent:     #0b3d2b;
-  --accent-lt:  #dce8e0;
+  --accent-lt:  #0b3d2b;
   --accent-drk: #176a4e;
   --warm:       #d4c4a0;
   --terracotta: #b58268;
@@ -157,8 +157,9 @@ p { color: var(--soft-ink); line-height: 1.65; }
   border: 1.5px solid var(--line);
 }
 .btn--outline:hover {
-  background: var(--accent-lt);
+  background: var(--accent-drk);
   border-color: var(--accent);
+  color: #f0ece4;
 }
 .btn--ghost {
   background: transparent;
@@ -471,6 +472,26 @@ body.reduce-motion *::after {
   max-width: 520px;
 }
 .company-text .intro-text:last-of-type { margin-bottom: 0; }
+.company-heading h2 {
+  color: var(--ink);
+}
+.company-heading .eyebrow {
+  color: var(--muted);
+}
+
+/* Override text colors for dark accent-lt background */
+.company .intro-text {
+  color: #e8e4dc;
+}
+.company-text .btn--ghost {
+  color: #d4ab4f;
+}
+.company .company-heading h2 {
+  color: #f0ece4;
+}
+.company .company-heading .eyebrow {
+  color: rgba(240,236,228,.6);
+}
 
 /* Four-practice visual block */
 .practice-blocks {
@@ -582,7 +603,7 @@ body.reduce-motion *::after {
 }
 .exp-head .eyebrow {
   margin: 0;
-  color: var(--accent-drk);
+  color: #f0ece4;
   font-weight: 700;
 }
 .exp-head-line {
@@ -766,7 +787,7 @@ body.reduce-motion *::after {
   padding: 8px 14px 8px 30px;
   border-radius: var(--radius-xs);
   background: var(--accent-lt);
-  color: var(--soft-ink);
+  color: #e8e4dc;
   font-size: 13px;
   font-weight: 600;
   line-height: 1.4;
@@ -1118,9 +1139,9 @@ body.reduce-motion *::after {
   width: 36px;
 }
 .perspective-card--featured {
-  background: linear-gradient(135deg, var(--accent-lt) 0%, var(--bg) 80%);
-  border-color: rgba(93,122,110,.15);
-  box-shadow: 0 8px 28px rgba(28,28,24,.04);
+  background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 80%);
+  border-color: var(--line);
+  box-shadow: var(--shadow-sm);
 }
 .perspective-card--featured::before {
   opacity: .25;
@@ -1145,8 +1166,8 @@ body.reduce-motion *::after {
   padding: 3px 10px;
   margin-bottom: 14px;
   border-radius: 999px;
-  background: var(--accent-lt);
-  color: var(--accent-drk);
+  background: var(--accent-drk);
+  color: #f0ece4;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: .08em;
@@ -1181,7 +1202,7 @@ body.reduce-motion *::after {
 .contact-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--accent-lt) 0%, rgba(230,239,232,.3) 100%);
+  background: var(--accent-lt);
 }
 /* Stone band below contact — grounding foundation like hero */
 .contact::after {
@@ -1206,8 +1227,9 @@ body.reduce-motion *::after {
   margin: 0 auto;
   padding-bottom: clamp(60px, 8vh, 100px);
 }
-.contact h2 { font-size: clamp(26px, 3.2vw, 42px); }
-.contact .intro-text { margin: 0 auto 32px; max-width: 520px; }
+.contact h2 { font-size: clamp(26px, 3.2vw, 42px); color: #f0ece4; }
+.contact .intro-text { margin: 0 auto 32px; max-width: 520px; color: #e8e4dc; }
+.contact .eyebrow { color: rgba(240,236,228,.6); }
 
 /* ─── CONTACT FORM ─── */
 .contact-form {
@@ -1300,8 +1322,8 @@ body.reduce-motion *::after {
   text-align: center;
 }
 .form-status--success {
-  background: var(--accent-lt);
-  color: var(--accent-drk);
+  background: var(--accent-drk);
+  color: #f0ece4;
 }
 .form-status--error {
   background: rgba(181,130,104,.12);
