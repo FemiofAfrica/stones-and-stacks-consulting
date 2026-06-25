@@ -94,6 +94,7 @@
   line-height: .9;
   letter-spacing: -.07em;
   font-weight: 900;
+  color: var(--ink);
   margin-bottom: 24px;
 }
 .ws-hero-text {
