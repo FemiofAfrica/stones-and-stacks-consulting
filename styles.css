@@ -700,27 +700,28 @@ body.reduce-motion *::after {
 .outcome-card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 24px 22px 26px;
+  gap: 16px;
+  padding: 28px 26px 30px;
   border-radius: var(--radius-md);
   background: var(--surface);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease;
+  border: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  transition: box-shadow .3s ease, transform .3s ease;
 }
 .outcome-card:hover {
-  box-shadow: var(--shadow);
-  border-color: rgba(93,122,110,.12);
+  box-shadow: 0 12px 40px rgba(0,0,0,.1);
+  transform: translateY(-4px);
 }
 .outcome-card--featured {
   position: relative;
   background:
-    linear-gradient(135deg, var(--surface) 0%, var(--surface) 60%, rgba(93,122,110,.04) 100%),
+    linear-gradient(135deg, rgba(11,61,43,.04) 0%, var(--surface) 60%),
     var(--surface);
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
 }
 .outcome-card--featured:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 16px 48px rgba(0,0,0,.12);
+  transform: translateY(-4px);
 }
 /* Icon treatments — varied by outcome */
 .outcome-icon {
@@ -780,25 +781,23 @@ body.reduce-motion *::after {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 6px;
+  gap: 4px;
 }
 .outcome-details li {
   position: relative;
-  padding: 8px 14px 8px 30px;
-  border-radius: var(--radius-xs);
-  background: var(--accent-lt);
-  color: #e8e4dc;
+  padding: 3px 0 3px 18px;
+  color: var(--soft-ink);
   font-size: 13px;
-  font-weight: 600;
-  line-height: 1.4;
+  font-weight: 500;
+  line-height: 1.5;
 }
 .outcome-details li::before {
   content: '→';
   position: absolute;
-  left: 13px;
+  left: 0;
   color: var(--accent);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 /* Outcome card extras */
@@ -850,7 +849,7 @@ body.reduce-motion *::after {
   font-size: 13px;
   font-weight: 700;
   color: var(--accent);
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(0,0,0,.06);
   transition: gap .2s ease, color .2s ease;
 }
 .outcome-link:hover {
