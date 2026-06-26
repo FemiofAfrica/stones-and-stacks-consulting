@@ -96,16 +96,16 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const data = new FormData(form);
+      const data = Object.fromEntries(new FormData(form));
       formStatus.hidden = false;
       formStatus.className = 'form-status form-status--sending';
       formStatus.textContent = 'Sending\u2026';
 
       try {
         const res = await fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: { 'Accept': 'application/json' },
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         });
 
         if (res.ok) {

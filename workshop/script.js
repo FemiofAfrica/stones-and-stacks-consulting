@@ -68,8 +68,8 @@
     const totalQs = questions.length; // 8
     let currentQ = 1;
 
-    // n8n webhook (primary — update URL once Railway n8n is deployed)
-    const N8N_WEBHOOK_URL = 'https://n8n.yourdomain.com/webhook/workshop-quiz';
+    // n8n webhook on Railway
+    const N8N_WEBHOOK_URL = 'https://n8n-production-dbd63.up.railway.app/webhook/workshop-quiz';
 
     // Google Form config (fallback — still fires, no-cors)
     const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfeulW8QXhS2XYI-ZIXj01CunFclaJGIDl6S0ZJpKL1-uAkfA/formResponse';
